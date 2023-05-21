@@ -75,6 +75,7 @@ round_label = pygame.font.Font(None, 50).render('Раунд '+str(round), True, 
 
 ask_continue_label = pygame.font.Font(None, 50).render('Продовжити', True, (0,0,255))
 ask_restart_label = pygame.font.Font(None,50).render('Зіграти знову', True, (0,0,255))
+end_label = pygame.font.Font(None, 50).render('Вийти', True, (255,0,0))
 
 hit = pygame.mixer.Sound('hit.mp3')
 
@@ -112,6 +113,8 @@ while game:
                 racket_R.rect.x = 800
                 racket_R.rect.y = 250
                 update = True
+            if 395 < pos[0] < 500 and 600 < pos[1] < 630:
+                game = False
     pygame.display.update()
     clock.tick(FPS)
 
@@ -138,6 +141,7 @@ while game:
     if ask_check == True:
         window.blit(ask_continue_label, (330,450))
         window.blit(ask_restart_label, (325, 550))
+        window.blit(end_label, (395,600))
 
     if update:
         racket_L.update_L()
